@@ -1,0 +1,82 @@
+[PASS] Test 1: Baseline candidate correctly identified as INFEASIBLE (energy shortfall).
+  [PASS] Test 2: Input validation correctly rejects boolean type.
+  [PASS] Test 3: Excessive mass correctly triggers MTOW_LIMIT failure.
+  [PASS] Test 4: Insufficient motor power rating correctly isolated.
+  [PASS] Test 5: Insufficient battery discharge limit correctly isolated.
+  [PASS] Test 6: Short-range commuter design correctly evaluates to FEASIBLE with compliant range.
+  [PASS] Test 7: Schema and provenance validator rejects uncited SOURCED field and non-InputParam object.
+  [PASS] Test 8: Missing clean stall boundary correctly yields UNRESOLVED status.
+  [PASS] Test 9 (CRITICAL BUG FIX): Out-of-bounds cl_max_clean=4.0 blocked at pre-evaluation gate.
+  [PASS] Test 10: Incompatible units ('lb' for mass) rejected by canonical units schema.
+  [PASS] Test 11: Top-level non-DesignInput objects cleanly caught without crashing.
+  [PASS] Test 12: Candidate passing energy but failing motor power correctly isolated.
+
+All 12 automated verification test assertions passed successfully.
+
+============================================================================================
+             EXECUTING REPRODUCIBLE BASELINE DESIGN EVALUATION
+============================================================================================
+============================================================================================
+       AIRCRAFT DESIGN EVALUATION REPORT: EMB-135_Baseline_Retrofit_Candidate
+============================================================================================
+  VERDICT         : 【 INFEASIBLE_UNDER_ASSUMPTIONS 】
+  SUMMARY         : Candidate design violated 2 constraint(s): [MISSION_ENERGY, RESERVE_LOITER_ENERGY].
+  PROVENANCE NOTE : 'SOURCED' indicates the submitter cited a source document;
+                    the evaluator does NOT independently audit or certify original sources.
+--------------------------------------------------------------------------------------------
+[1. 实际质量预算 (Actual Mass Accounting)]
+  - 实际起飞总重 (Actual TOW)  : 19,000.0 kg
+  - 结构上限 (MTOW Limit)      : 19,000.0 kg
+  - 质量裕度 (Mass Margin)     : +0.0 kg (PASS)
+
+[2. 气动力与推进工况 (Calculated at Actual Mass)]
+  - 升力系数 (C_L)             : 0.3781
+  - 阻力系数 (C_D)             : 0.0353 (L/D: 10.71)
+  - 气动阻力 (Drag)            : 17.39 kN
+  - 机械轴功率 (P_shaft)       : 4.000 MW
+  - 电端巡航需求 (P_electric)  : 4.210 MW
+  - 电端峰值需求 (P_peak)      : 8.421 MW
+
+[3. 能量收支与储能能力]
+  - 可用电池总能量 (Pack E)    : 2,420.9 MJ (672.5 kWh)
+  - 目标航段巡航电能           : 16,951.7 MJ (4,708.8 kWh)
+  - 备用盘旋电能需求           : 6,821.0 MJ (1,894.7 kWh)
+  - 任务总需求电能             : 23,772.7 MJ (6,603.5 kWh)
+
+[4. 航程解耦审计 (Decoupled Range Diagnostics)]
+  - 纯能量极限航程 (Energy-Limited)    : NO_RESERVE_COMPLIANT_MISSION
+  - 全约束合规航程 (Operationally Compliant): None (Non-Compliant)
+  - 理论零备用极限放电航程             : 71.4 nm
+  - 航程诊断详情                       : Operationally compliant range is None (Candidate violates 2 constraint(s): [MISSION_ENERGY, RESERVE_LOITER_ENERGY])
+
+[5. 违规约束清单 (Failed Constraints: 2)]
+  1. [MISSION_ENERGY] Usable battery energy cannot cover total mission (cruise + reserve) demand
+     需求门槛: 23,772,710,606.05 J | 实际能力: 2,420,928,000.00 J | 裕度: -21,351,782,606.05 J
+  2. [RESERVE_LOITER_ENERGY] Total usable battery energy is insufficient to sustain standalone reserve loiter
+     需求门槛: 6,820,970,253.98 J | 实际能力: 2,420,928,000.00 J | 裕度: -4,400,042,253.98 J
+
+[6. 暂定假设与待解析项 (Assumed & Unresolved Items)]
+  - cd0: ASSUMED (Clean zero-lift drag coefficient)
+  - oswald_e: ASSUMED (Oswald efficiency factor)
+  - cruise_altitude_m: ASSUMED (Nominal cruise altitude)
+  - cruise_speed_mps: ASSUMED (Nominal cruise true airspeed (~M0.78))
+  - pack_specific_energy_wh_kg: ASSUMED (Pack-level specific energy)
+  - usable_dod: ASSUMED (Maximum usable depth of discharge)
+  - continuous_discharge_power_limit_w: ASSUMED (Pack continuous discharge power limit (5.0 MW))
+  - peak_discharge_power_limit_w: ASSUMED (Pack peak discharge power limit (10.0 MW))
+  - motor_efficiency: ASSUMED (Motor electric-to-shaft efficiency)
+  - propulsive_efficiency: ASSUMED (Propeller/fan aerodynamic efficiency)
+  - inverter_efficiency: ASSUMED (Idealized inverter)
+  - additional_powertrain_mass_kg: ASSUMED (Mounting, cooling, cabling overhead)
+  - target_range_nm: ASSUMED (Target mission stage length)
+  - reserve_loiter_time_s: ASSUMED (45-minute holding reserve)
+  - loiter_power_factor: ASSUMED (Power reduction factor during loiter)
+
+[7. 适用边界与主要未建模物理效应声明 (Model Scope & Unmodeled Effects)]
+  1. Ground roll, rotation, and dynamic climb-out energy consumption
+  2. High-lift device (flaps/slats) low-speed field stall speeds and approach margins
+  3. Thermal Management System (TMS) heat dissipation and continuous cooling power penalty
+  4. Aeroelastic structural wing twist/bending and high-speed compressibility drag rise
+  5. Longitudinal and lateral-directional CG travel tracking across full mission profile
+  6. Descent glide profile deceleration and battery charge-recovery dynamics
+============================================================================================

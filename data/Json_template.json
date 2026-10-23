@@ -1,0 +1,185 @@
+{
+  "design_name": "TeamA_Concept_01",
+  "base_mass_kg": {
+    "value": 11000.0,
+    "units": "kg",
+    "status": "ESTIMATED",
+    "source": "Replace with verified reference",
+    "description": "Airframe mass after removing original engines and fuel system"
+  },
+  "payload_kg": {
+    "value": 4198.0,
+    "units": "kg",
+    "status": "SOURCED",
+    "source": "Replace with document, revision and page",
+    "description": "Payload carried by the candidate"
+  },
+  "mtow_kg": {
+    "value": 19000.0,
+    "units": "kg",
+    "status": "SOURCED",
+    "source": "Replace with document, revision and page",
+    "description": "Maximum takeoff weight limit"
+  },
+  "wing_area_m2": {
+    "value": 51.18,
+    "units": "m^2",
+    "status": "SOURCED",
+    "source": "Replace with verified reference",
+    "description": "Wing reference area"
+  },
+  "aspect_ratio": {
+    "value": 7.8,
+    "units": "dimensionless",
+    "status": "SOURCED",
+    "source": "Replace with verified reference",
+    "description": "Wing aspect ratio"
+  },
+  "cd0": {
+    "value": 0.028,
+    "units": "dimensionless",
+    "status": "ASSUMED",
+    "source": "Preliminary aerodynamic model",
+    "description": "Zero-lift drag coefficient"
+  },
+  "oswald_e": {
+    "value": 0.8,
+    "units": "dimensionless",
+    "status": "ASSUMED",
+    "source": "Preliminary aerodynamic model",
+    "description": "Oswald efficiency factor"
+  },
+  "cruise_altitude_m": {
+    "value": 11000.0,
+    "units": "m",
+    "status": "ASSUMED",
+    "source": "Mission definition",
+    "description": "Cruise altitude"
+  },
+  "air_density_kg_pm3": {
+    "value": 0.364,
+    "units": "kg/m^3",
+    "status": "ESTIMATED",
+    "source": "Verify atmosphere model and conditions",
+    "description": "Air density at cruise altitude"
+  },
+  "cruise_speed_mps": {
+    "value": 230.0,
+    "units": "m/s",
+    "status": "ASSUMED",
+    "source": "Mission definition",
+    "description": "Cruise true airspeed"
+  },
+  "cl_max_clean": {
+    "value": 1.4,
+    "units": "dimensionless",
+    "status": "ESTIMATED",
+    "source": "Replace with aerodynamic evidence",
+    "description": "Clean-configuration maximum lift coefficient"
+  },
+  "battery_mass_kg": {
+    "value": 2802.0,
+    "units": "kg",
+    "status": "ESTIMATED",
+    "source": "Candidate mass budget",
+    "description": "Installed battery pack mass"
+  },
+  "pack_specific_energy_wh_kg": {
+    "value": 300.0,
+    "units": "Wh/kg",
+    "status": "ASSUMED",
+    "source": "Battery technology assumption",
+    "description": "Pack-level specific energy, not cell-level"
+  },
+  "usable_dod": {
+    "value": 0.8,
+    "units": "dimensionless",
+    "status": "ASSUMED",
+    "source": "Battery operating assumption",
+    "description": "Usable depth of discharge"
+  },
+  "continuous_discharge_power_limit_w": {
+    "value": 5000000.0,
+    "units": "W",
+    "status": "ASSUMED",
+    "source": "Battery power model",
+    "description": "Battery continuous electric power limit"
+  },
+  "peak_discharge_power_limit_w": {
+    "value": 10000000.0,
+    "units": "W",
+    "status": "ASSUMED",
+    "source": "Battery power model",
+    "description": "Battery peak electric power limit"
+  },
+  "motor_mass_kg": {
+    "value": 1000.0,
+    "units": "kg",
+    "status": "ESTIMATED",
+    "source": "Motor sizing model",
+    "description": "Installed motor mass included in the mass budget"
+  },
+  "motor_continuous_rating_w": {
+    "value": 4500000.0,
+    "units": "W",
+    "status": "ESTIMATED",
+    "source": "Motor specification or sizing model",
+    "description": "Continuous mechanical shaft power rating"
+  },
+  "motor_peak_rating_w": {
+    "value": 8000000.0,
+    "units": "W",
+    "status": "ESTIMATED",
+    "source": "Motor specification or sizing model",
+    "description": "Peak mechanical shaft power rating"
+  },
+  "motor_efficiency": {
+    "value": 0.95,
+    "units": "dimensionless",
+    "status": "ASSUMED",
+    "source": "Motor efficiency assumption",
+    "description": "Electric-to-shaft efficiency"
+  },
+  "propulsive_efficiency": {
+    "value": 1.0,
+    "units": "dimensionless",
+    "status": "ASSUMED",
+    "source": "Preliminary propulsion model",
+    "description": "Propulsive efficiency; verify realistic value"
+  },
+  "inverter_efficiency": {
+    "value": 1.0,
+    "units": "dimensionless",
+    "status": "ASSUMED",
+    "source": "Preliminary electrical model",
+    "description": "Inverter efficiency"
+  },
+  "additional_powertrain_mass_kg": {
+    "value": 0.0,
+    "units": "kg",
+    "status": "ASSUMED",
+    "source": "Candidate mass budget",
+    "description": "Additional cabling, cooling and installation mass"
+  },
+  "target_range_nm": {
+    "value": 500.0,
+    "units": "nm",
+    "status": "ASSUMED",
+    "source": "Mission requirement",
+    "description": "Required mission range to evaluate"
+  },
+  "reserve_loiter_time_s": {
+    "value": 2700.0,
+    "units": "s",
+    "status": "ASSUMED",
+    "source": "Project mission policy",
+    "description": "Reserve loiter duration; 2700 seconds is 45 minutes"
+  },
+  "loiter_power_factor": {
+    "value": 0.6,
+    "units": "dimensionless",
+    "status": "ASSUMED",
+    "source": "Preliminary loiter model",
+    "description": "Loiter power as a fraction of modeled cruise electric power"
+  }
+}

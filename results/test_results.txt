@@ -1,0 +1,48 @@
+PS C:\Users\user\framework_v03_6_final> python MissionSolver.py
+======================================================================================
+  EMB-135 电动改装双边界判定与敏感性分析 (MissionSolver.py - Closed-Form Bounds)
+======================================================================================
+
+[1. 基础质量预算 (Mass Budget Breakdown)]
+  - 结构最大起飞总重 (MTOW)               : 19,000.0 kg
+  - 扣除原发动机后空重 (Base Mass)        : 11,000.0 kg (不含原 AE3007 发动机)
+  - 目标设计商载 (Payload)                : 4,198.0 kg
+  - 理论最低总质量下界 (Minimum Mass)     : 15,198.0 kg (完全不含动力系统)
+  - 刚性剩余可用改装质量预算              : 3,802.0 kg
+
+[2. 气动与推进功率边界对照]
+  - 巡航速度 (PROVISIONAL ASSUMPTION)     : 230.0 m/s (~Mach 0.778)
+  - 推进器效率 (PROVISIONAL ASSUMPTION)   : 1.00 (理想乐观基准)
+  - 电机效率                              : 0.95
+  指标名称                             | 最低质量边界 (15,198 kg)     | MTOW边界 (19,000 kg)  
+  ---------------------------------|------------------------|---------------------
+  升力系数 (C_L)                     | 0.3025                 | 0.3781              
+  阻力系数 (C_D)                     | 0.0327                 | 0.0353              
+  升阻比 (L/D)                      | 9.26                   | 10.71               
+  巡航气动阻力 (Drag)                | 16.10               kN | 17.39             kN
+  有效推力功率 (P_thrust)         | 3.702               MW | 4.000             MW
+  机械轴功率 (P_shaft)             | 3.702               MW | 4.000             MW
+  电机输入电功率 (P_electric)      | 3.897               MW | 4.210             MW
+  电机所需质量 (8 kW/kg 轴功率)     | 925.6               kg | 1000.0            kg
+
+[3. 500 nm 任务能量与电池质量需求对照]
+  500 nm 巡航电能需求                  | 15690.0             MJ | 16951.7           MJ
+  项目假设 45 min 盘旋备用电能         | 6313.3              MJ | 6821.0            MJ
+  任务总需求电能                          | 22003.2             MJ | 23772.7           MJ
+  所需电池质量 (300 Wh/kg, 80%)  | 25466.7             kg | 27514.7           kg
+  电驱总质量 (电机 + 电池)            | 26392.3             kg | 28514.7           kg
+  可用质量裕度 (Margin)              | -22590.3            kg | -24712.7          kg
+
+[4. 核心系统判定 (Core Architectural Verdict)]
+  - 判定结论: 【 INFEASIBLE_UNDER_ASSUMPTIONS 】
+  - 完整声明: INFEASIBLE_UNDER_ASSUMPTIONS (Infeasible under given assumptions: 500 nm mission, 4,198 kg payload, 300 Wh/kg battery, 80% DoD, and simplified aerodynamic model)
+
+[5. 敏感性分析 (Sensitivity Analysis)]
+  (A) Scenario A (Trade-off: 严格限制改装质量 <= 3,802 kg):
+      - 扣除 MTOW 边界电机后可用电池质量 : 2,802.0 kg
+      - 满足项目假设 45 min 备用巡航航程 : NO_RESERVE_COMPLIANT_MISSION
+      - [参考] 理论零备用极限放电航程   : 71.4 nm
+  (B) Scenario B (Tech Leap: 必须飞 500 nm 且总改装质量 <= 3,802 kg):
+      - 维持 500 nm 所需的电池包比能量 : 2,945.9 Wh/kg
+      - 相比当前假设 (300 Wh/kg) 的倍数  : 9.82 倍 (技术代差差距)
+======================================================================================
