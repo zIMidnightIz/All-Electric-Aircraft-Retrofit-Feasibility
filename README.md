@@ -11,8 +11,19 @@ electric operation.
 - Sensitivity analysis
 
 ## Project Status
-Preliminary engineering screening tool.
-Not certified aircraft design software.
+
+**Status: Work in Progress**
+
+This project is under active development.
+
+- **DesignEvaluator:** The standalone aircraft design evaluation module has been developed. Further testing and refinement may continue.
+- **MissionSolver:** A separate mission and feasibility boundary solver. Integration with the overall framework is pending.
+- **Framework integration:** Connecting the individual modules into a unified workflow remains future work.
+- **Sensitivity and hybrid analysis:** Exploratory tools for investigating design sensitivity and hypothetical hybrid powertrain configurations. These are not yet part of a fully integrated workflow.
+
+The final scope, supported workflows, and usage instructions will be updated as development progresses.
+
+This framework is intended for preliminary engineering screening and is not certified aircraft design or airworthiness assessment software.
 
 ## Development Notes
 This project was developed with AI assistance.
